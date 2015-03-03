@@ -1,3 +1,5 @@
+// El primer fitxer javascript que feim
+
 $(document).on("pagecreate", "#pageone", function(){
   console.log("PAGECREATE pageone");
 });
