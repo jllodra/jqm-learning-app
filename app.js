@@ -1,53 +1,56 @@
-// El primer fitxer javascript que feim
+var app = {
 
-$(document).on("pagecreate", "#pageone", function() {
-  //console.log("PAGECREATE pageone");
-});
+	aplicacio: "Aplicacio premis CODE",
 
-$(document).on("pagecreate", "#pagetwo", function() {
-  //console.log("PAGECREATE pagetwo");
-});
+	init: function() {
+		$(document).on("pagecreate", "#page1", function() {
+		  app.c1.init();
+		});
 
-$(document).on("pagecontainerbeforeshow", function(event, ui) {
-  //console.log("PAGECONTAINERBEFORESHOW change page");
-  //console.log(event);
-  //console.log(ui);
-});
+		$(document).on("pagecreate", "#page2", function() {
+		  app.c2.init();
+		});
 
-$(document).on("pagecontainershow", function(event, ui) {
-  //console.log("PAGECONTAINERSHOW change page");
-});
+		$(document).on("pagecontainerbeforeshow", function(event, ui) {
+		  var toPage = ui.toPage[0] || null;
+		  switch(toPage.id) {
+		  	case 'page1':
+		  		app.c1.update();
+		  		break;
+		  	case 'page2':
+		  		app.c2.update();
+		  		break;
+		  	default:
+		  		console.error("Error, no se a quina pagina anam...");
+		  		break;
+		  }
+		});
 
+		/*$(document).on("pagecontainershow", function(event, ui) {
+		  console.log("PAGECONTAINERSHOW change page");
+		});*/
+	},
 
-// cream variables de tipus elementals
-
-var n = 10;
-var s = "cadena de texte";
-var b = true;
-
-// Cream objectes
-
-var o = {
-	prop1: n+2,
-	prop2: "cadena dins objecte",
-	prop3: false
 };
 
-var o2 = {
-	prop1: 2,
-	prop2: o
-};
+app.init();
 
-// Funcions
 
-function suma(a1, a2, a3) {
-	var tercer = a3 || 0;
-	return a1 + a2 + tercer;
-};
 
-var suma2 = function(a1, a2, a3) {
-	return suma(a1, a2, a3);
-}
 
-var resultat = suma(6, suma2(20, 10));
-console.log(resultat);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

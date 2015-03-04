@@ -1,0 +1,8 @@
+@import url(http://fonts.googleapis.com/css?family=Roboto+Slab:300);
+/*@import url(http://fonts.googleapis.com/css?family=Roboto+Slab);*/
+/*@import url(http://fonts.googleapis.com/css?family=Slabo+27px);*/
+
+body, input, select, textarea, button, .ui-btn {
+	/*font-family: 'Slabo 27px', serif;*/
+	font-family: 'Roboto Slab', serif;
+}
