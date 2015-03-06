@@ -44,3 +44,83 @@ var suma2 = function(a1, a2, a3) {
 
 var resultat = suma(6, suma2(20, 10));
 
+// Variables globals vs locals y ejemplo de this (call-site)
+
+var variable = 10;
+
+function incrementaVariable(cantidad) {
+	var nueva_variable = cantidad;
+	this.variable += nueva_variable;
+}
+
+var funciones = {
+	f1: incrementaVariable,
+	variable: 11
+};
+
+
+incrementaVariable(2);
+funciones.f1(2);
+
+// Mas this (call-site)
+
+var pos1 = {
+	x: 10,
+	y: 20
+};
+
+var pos2 = {
+	x: 11,
+	y: 12
+};
+
+//
+
+function comparar(n, m) {
+	return m > n;
+}
+
+var r1 = comparar(pos1.x, pos1.y);
+var r2 = comparar(pos2.x, pos2.y);
+
+console.log(r1);
+console.log(r2);
+
+//
+
+function comparar2() {
+	return this.y > this.x;
+}
+
+pos1.validaNumeros = comparar2;
+pos2.validaNumeros = comparar2;
+
+var r1 = pos1.validaNumeros();
+var r2 = pos2.validaNumeros();
+
+console.log(r1);
+console.log(r2);
+
+//
+
+comparar2.apply(pos1);
+comparar2.apply(pos2);
+
+comparar2.bind(pos1);
+comparar2();
+
+//
+
+function f(g) {
+	g();
+}
+
+f(function() {
+	console.log("g");
+	console.log(this);
+}.bind(pos1));
+
+//
+
+
+

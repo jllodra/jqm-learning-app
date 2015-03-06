@@ -13,6 +13,7 @@ app.c2 = {
 	update: function() {
 		console.log("UPDATE del controlador2, page2");
 		$('#page2header').text(app.c2.data.nombre);
+		$('#page2name').text(app.c2.data.nombre);
 	}
 
 };
