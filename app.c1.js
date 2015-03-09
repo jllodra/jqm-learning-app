@@ -6,7 +6,7 @@ app.c1 = {
 		console.log("INIT del controlador1, page1");
 		
 		$('#page1listview').on("click", "li", function() {
-			app.c2.data.nombre = $(this).text();
+			app.c2.data.index = $(this).index();
 		});
 
 		app.c1.updateList();

@@ -15,6 +15,7 @@
   <script src="app.m.js"></script>
   <script src="app.c1.js"></script>
   <script src="app.c2.js"></script>
+  <script src="app.c3.js"></script>
 </head>
 <body>
 
@@ -38,21 +39,48 @@
 
 <div data-role="page" id="page2">
   <div data-role="header" data-position="fixed">
-    <a href="#" class="ui-btn ui-icon-back ui-btn-icon-left" data-rel="back">Tornar</a>
+    <a href="#page1" class="ui-btn ui-icon-back ui-btn-icon-left">Tornar</a>
     <h1 id="page2header">Andreu</h1>
   </div>
 
    <div data-role="main" class="ui-content">
     <h3>Informacio:</h3>
     <p>Nom: <span id="page2name">Andreu</span></p>
-    <p>Cognoms: ___</p>
-    <p>Telefon: 0000000</p>
+    <p>Cognoms: <span id="page2surnames">___</span></p>
+    <p>Telefon: <span id="page2phone">0000000</span></p>
+    <a id="page2editbutton" href="#page3" class="ui-btn">Editar</a>
   </div>
 
   <!--<div data-role="footer" data-position="fixed">
     <h1>Footer</h1>
   </div>-->
-</div> 
+</div>
+
+
+<div data-role="page" id="page3">
+  <div data-role="header" data-position="fixed">
+    <a href="#" class="ui-btn ui-icon-back ui-btn-icon-left" data-rel="back">Tornar</a>
+    <h1 id="page3header">Andreu</h1>
+  </div>
+
+  <div data-role="main" class="ui-content">
+    <form>
+      <label for="page3name">Nom:</label>
+      <input type="text" name="page3name" id="page3name">
+      <label for="page3surnames">Cognoms:</label>
+      <input type="text" name="page3surnames" id="page3surnames">
+      <label for="page3phone">Telefon:</label>
+      <input type="text" name="page3phone" id="page3phone">
+      <a id="page3savebutton" href="#page2" class="ui-btn">Guardar</a>
+      <a id="page3deletebutton" href="#page2" class="ui-btn">Eliminar</a>
+    </form>
+  </div>
+
+  <!--<div data-role="footer" data-position="fixed">
+    <h1>Footer</h1>
+  </div>-->
+</div>
+
 
 </body>
 </html>

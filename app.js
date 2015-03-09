@@ -11,6 +11,11 @@ var app = {
 		  app.c2.init();
 		});
 
+		$(document).on("pagecreate", "#page3", function() {
+		  app.c3.init();
+		});
+
+
 		$(document).on("pagecontainerbeforeshow", function(event, ui) {
 		  var toPage = ui.toPage[0] || null;
 		  switch(toPage.id) {
@@ -19,6 +24,9 @@ var app = {
 		  		break;
 		  	case 'page2':
 		  		app.c2.update();
+		  		break;
+		  	case 'page3':
+		  		app.c3.update();
 		  		break;
 		  	default:
 		  		console.error("Error, no se a quina pagina anam...");

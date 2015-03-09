@@ -3,17 +3,28 @@ app.c2 = {
 	page: "#page2",
 
 	data: {
-		nombre: ""
+		index: 0
 	},
 
 	init: function() {
 		console.log("INIT del controlador2, page2");
+
+		$('#page2editbutton').on("click", function() {
+			app.c3.data.index = app.c2.data.index;
+		});
 	},
 
 	update: function() {
 		console.log("UPDATE del controlador2, page2");
-		$('#page2header').text(app.c2.data.nombre);
-		$('#page2name').text(app.c2.data.nombre);
+
+		// Anar a cercar l'alumne en questio
+		var alumne = app.m.alumnes[app.c2.data.index];
+
+		// Pintar l'alumne en pantalla
+		$('#page2header').text(alumne.nom + " " + alumne.cognoms);
+		$('#page2name').text(alumne.nom);
+		$('#page2surnames').text(alumne.cognoms);
+		$('#page2phone').text(alumne.telefon);
 	}
 
 };
