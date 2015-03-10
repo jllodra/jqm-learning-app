@@ -26,8 +26,20 @@ app.m = {
 
 	],
 
+	// funcions per manipular store/collection
+
+	afegeixAlumne: function(alumne) {
+		app.m.alumnes.push(alumne);
+		app.m.proxy.ls.guardarDades();
+	},
+
 	actualitzaAlumne: function(index, alumne) {
 		app.m.alumnes[index] = alumne;
+		app.m.proxy.ls.guardarDades();
+	},
+
+	eliminaAlumne: function(index) {
+		app.m.alumnes.splice(index, 1);
 		app.m.proxy.ls.guardarDades();
 	},
 

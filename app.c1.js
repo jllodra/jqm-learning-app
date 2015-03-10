@@ -9,12 +9,17 @@ app.c1 = {
 			app.c2.data.index = $(this).index();
 		});
 
+		$('#page1addbutton').on("click", function() {
+			app.c3.data.index = null;
+		});
+
 		app.c1.updateList();
 	},
 
 	updateList: function() {
 		var llista = [];
 		for(var i = 0, max = app.m.alumnes.length; i < max; i++) {
+			debugger;
 			llista.push([
 				'<li>',
 				'	<a href="#page2">',
@@ -29,6 +34,7 @@ app.c1 = {
 
 	update: function() {
 		console.log("UPDATE del controlador1, page1");
+		app.c1.updateList();
 	}
 
 };

@@ -2,35 +2,34 @@ var app = {
 
 	aplicacio: "Aplicacio premis CODE",
 
+	rutes: {
+		/*
+		'#page1': app.c1,
+		'#page2': app.c2,
+		'#page3': app.c3
+		*/
+	},
+
+	preparaRutes: function() {
+		for(var prop in app) {
+			if(app[prop].hasOwnProperty("page")) { // hem trobat un controlador
+				app.rutes[app[prop].page] = app[prop];
+			}
+		}
+	},
+
 	init: function() {
-		$(document).on("pagecreate", "#page1", function() {
-		  app.c1.init();
+		$(document).on("pagecreate", "div:jqmData(role='page')", function() {
+			if($.isEmptyObject(app.rutes)) {
+				app.preparaRutes();
+			}
+			app.rutes["#" + this.id].init();
 		});
-
-		$(document).on("pagecreate", "#page2", function() {
-		  app.c2.init();
-		});
-
-		$(document).on("pagecreate", "#page3", function() {
-		  app.c3.init();
-		});
-
 
 		$(document).on("pagecontainerbeforeshow", function(event, ui) {
 		  var toPage = ui.toPage[0] || null;
-		  switch(toPage.id) {
-		  	case 'page1':
-		  		app.c1.update();
-		  		break;
-		  	case 'page2':
-		  		app.c2.update();
-		  		break;
-		  	case 'page3':
-		  		app.c3.update();
-		  		break;
-		  	default:
-		  		console.error("Error, no se a quina pagina anam...");
-		  		break;
+		  if(app.rutes.hasOwnProperty("#" + toPage.id)) {
+		  	app.rutes["#" + toPage.id].update();
 		  }
 		});
 
