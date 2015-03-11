@@ -19,7 +19,6 @@ app.c1 = {
 	updateList: function() {
 		var llista = [];
 		for(var i = 0, max = app.m.alumnes.length; i < max; i++) {
-			debugger;
 			llista.push([
 				'<li>',
 				'	<a href="#page2">',

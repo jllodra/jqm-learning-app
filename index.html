@@ -10,8 +10,9 @@
   <link rel="stylesheet" href="css/fonts.css">
   <!--link rel="stylesheet" href="jquery-mobile/jquery.mobile-1.4.5.min.css"-->
   <!-- MOBILE INIT -->
-  <!-- debugger -->
+  <!-- closure, debugger -->
   <!-- Cordova/SDK/phonegap -->
+  <!-- ajax/server-side -->
   <!-- JS: Constructors, Moduls, Prototips (Object.)-->
   <!-- JS: requirejs (reescriure un poc el nostre framework) -->
   <!-- Nodejs / npm / Express -->
@@ -19,6 +20,11 @@
   <!-- Ajuda APPS -->
 
   <script src="jquery/jquery-2.1.3.js"></script>
+  <script>
+    $( document ).on( "mobileinit", function() {
+      $.mobile.defaultPageTransition = 'none';
+    });
+  </script>
   <script src="jquery-mobile/jquery.mobile-1.4.5.min.js"></script>
   <script src="app.js"></script>
   <script src="app.m.js"></script>
