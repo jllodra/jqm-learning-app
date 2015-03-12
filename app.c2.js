@@ -14,6 +14,15 @@ app.c2 = {
 		});
 	},
 
+	beforeShow: function() {
+		console.log("beforeShow c2");
+		app.c2.update();
+	},
+
+	afterShow: function() {
+		console.log("afterShow c2");
+	},
+
 	update: function() {
 		console.log("UPDATE del controlador2, page2");
 

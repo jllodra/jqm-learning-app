@@ -13,7 +13,6 @@ app.c1 = {
 			app.c3.data.index = null;
 		});
 
-		app.c1.updateList();
 	},
 
 	updateList: function() {
@@ -29,6 +28,17 @@ app.c1 = {
 		}
 		$('#page1listview').html(llista.join(''));
 		$('#page1listview').listview("refresh");
+	},
+
+	beforeShow: function() {
+		console.log("beforeShow c1");
+	},
+
+	afterShow: function() {
+		console.log("afterShow c1");
+		app.m.proxy.ajax.carregarDades(function() {
+			app.c1.update();
+		});
 	},
 
 	update: function() {

@@ -22,14 +22,24 @@ var app = {
 		$(document).on("pagecreate", "div:jqmData(role='page')", function() {
 			if($.isEmptyObject(app.rutes)) {
 				app.preparaRutes();
+				app.m.proxy.ls.carregarDades();
 			}
 			app.rutes["#" + this.id].init();
 		});
 
-		$(document).on("pagecontainerbeforeshow", function(event, ui) {
+		$(document).on("pagecontainerbeforeshow pagecontainershow", function(event, ui) {
 		  var toPage = ui.toPage[0] || null;
 		  if(app.rutes.hasOwnProperty("#" + toPage.id)) {
-		  	app.rutes["#" + toPage.id].update();
+		  	switch(event.type) {
+		  		case 'pagecontainerbeforeshow':
+		  			app.rutes["#" + toPage.id].beforeShow();
+		  			break;
+		  		case 'pagecontainershow':
+		  			app.rutes["#" + toPage.id].afterShow();
+		  			break;
+		  		default:
+		  			break;
+		  	}
 		  }
 		});
 

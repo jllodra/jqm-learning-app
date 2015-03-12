@@ -4,19 +4,19 @@
   <meta charset="utf-8">
   <!-- Include meta tag to ensure proper rendering and touch zooming -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <!--<link rel="stylesheet" href="css/themes/custom.min.css">
+  <link rel="stylesheet" href="css/themes/custom.min.css">
   <link rel="stylesheet" href="css/themes/jquery.mobile.icons.min.css">
   <link rel="stylesheet" href="jquery-mobile/jquery.mobile.structure-1.4.5.min.css">
-  <link rel="stylesheet" href="css/fonts.css">-->
-  <link rel="stylesheet" href="jquery-mobile/jquery.mobile-1.4.5.min.css">
+  <link rel="stylesheet" href="css/fonts.css">
+  <!--<link rel="stylesheet" href="jquery-mobile/jquery.mobile-1.4.5.min.css">-->
   <!-- MOBILE INIT -->
-  <!-- closure, debugger -->
   <!-- Cordova/SDK/phonegap -->
   <!-- ajax/server-side -->
-  <!-- JS: Constructors, Moduls, Prototips (Object.)-->
-  <!-- JS: requirejs (reescriure un poc el nostre framework) -->
-  <!-- Nodejs / npm / Express -->
   <!-- plugins de Cordova -->
+  <!-- closure, debugger -->
+  <!-- Nodejs / npm / Express -->
+  <!-- JS: Constructors, Moduls, mixins, Prototips (Object.) -->
+  <!-- JS: requirejs (reescriure un poc el nostre framework) -->
   <!-- Ajuda APPS -->
   <script src="jquery/jquery-2.1.3.js"></script>
   <script>
@@ -32,8 +32,20 @@
   <script src="app.c2.js"></script>
   <script src="app.c3.js"></script>
 
+  <style>
+    .ui-loader-background {
+      width: 100%; height: 100%;
+      left: 0; top: 0;
+      margin: 0; background: rgba(0,0,0,0.3);
+      display: none; position: fixed; z-index: 10000;
+    }
+    .ui-loading .ui-loader-background { display: block; }
+  </style>
+
 </head>
 <body>
+
+<div class="ui-loader-background"></div>
 
 <div data-role="page" id="page1">
   <div data-role="header" data-position="fixed">
@@ -43,9 +55,9 @@
 
   <div data-role="main" class="ui-content">
     <ul id="page1listview" data-role="listview">
-      <li><a href="#page2">Andreu</a></li>
+      <!--<li><a href="#page2">Andreu</a></li>
       <li><a href="#page2">Joan</a></li>
-      <li><a href="#page2">Jaume</a></li>
+      <li><a href="#page2">Jaume</a></li>-->
     </ul>
   </div>
 
@@ -88,7 +100,7 @@
       <input type="text" name="page3surnames" id="page3surnames">
       <label for="page3phone">Telefon:</label>
       <input type="text" name="page3phone" id="page3phone">
-      <a id="page3savebutton" href="#" data-rel="back" class="ui-btn">Guardar</a>
+      <a id="page3savebutton" href="#" class="ui-btn">Guardar</a>
       <a id="page3deletebutton" href="#page1" class="ui-btn">Eliminar</a>
     </form>
   </div>

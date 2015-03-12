@@ -1,5 +1,7 @@
 app.m = {
 
+	url: 'http://aawefohiwef',
+
 	// store // collection
 
 	alumnes: [
@@ -60,9 +62,38 @@ app.m = {
 				var s = JSON.stringify(app.m.alumnes);
 				localStorage.setItem('alumnes', s);
 			}
+		},
+		ajax: {
+			carregarDades: function(callback) {
+				// ajax get
+				$.mobile.loading('show');
+				$.getJSON("server.php")
+				.done(function(data, status) {
+					app.m.alumnes = data;
+    				callback();
+  				})
+  				.fail(function() {
+    				window.alert("Ha fallado ajax");
+  				})
+  				.always(function() {
+					$.mobile.loading('hide');
+  				});
+			},
+			guardarDades: function(callback) {
+				// ajax post
+				$.mobile.loading('show');
+				$.post("server.php", { data: JSON.stringify(app.m.alumnes) })
+				.done(function(data, status) {
+    				callback();
+  				})
+  				.fail(function() {
+    				window.alert("Ha fallado ajax");
+  				})
+  				.always(function() {
+					$.mobile.loading('hide');
+  				});
+  			}
 		}
 	}
 
 };
-
-app.m.proxy.ls.carregarDades();

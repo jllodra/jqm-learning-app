@@ -20,11 +20,23 @@ app.c3 = {
 			} else {
 				app.m.afegeixAlumne(alumne);
 			}
+			app.m.proxy.ajax.guardarDades(function() {
+				$.mobile.back();
+			});
 		});
 
 		$('#page3deletebutton').on("click", function() {
 			app.m.eliminaAlumne(app.c3.data.index);
 		});
+	},
+
+	beforeShow: function() {
+		console.log("beforeShow c3");
+		app.c3.update();
+	},
+
+	afterShow: function() {
+		console.log("afterShow c3");
 	},
 
 	update: function() {
