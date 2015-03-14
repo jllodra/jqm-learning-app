@@ -7,6 +7,7 @@
   <link rel="stylesheet" href="css/themes/custom.min.css">
   <link rel="stylesheet" href="css/themes/jquery.mobile.icons.min.css">
   <link rel="stylesheet" href="jquery-mobile/jquery.mobile.structure-1.4.5.min.css">
+  <link rel="stylesheet" href="vendors/jqm-iscroll/jquery.mobile-1.4.3-iscroll.css">
   <link rel="stylesheet" href="css/fonts.css">
   <!--<link rel="stylesheet" href="jquery-mobile/jquery.mobile-1.4.5.min.css">-->
   <!-- MOBILE INIT -->
@@ -24,7 +25,10 @@
       $.mobile.defaultPageTransition = 'none';
     });
   </script>
-  <script src="jquery-mobile/jquery.mobile-1.4.5.min.js"></script>-->
+  <script src="jquery-mobile/jquery.mobile-1.4.5.min.js"></script>
+  <script src="vendors/jqm-iscroll/iscroll-probe.js"></script>
+  <script src="vendors/jqm-iscroll/jquery.mobile-1.4.3-iscroll.js"></script>
+  
   
   <script src="app.js"></script>
   <script src="app.m.js"></script>
@@ -54,11 +58,13 @@
   </div>
 
   <div data-role="main" class="ui-content">
-    <ul id="page1listview" data-role="listview">
-      <!--<li><a href="#page2">Andreu</a></li>
-      <li><a href="#page2">Joan</a></li>
-      <li><a href="#page2">Jaume</a></li>-->
-    </ul>
+    <div data-iscroll="true" data-fullscreen="true" data-pulltorefresh-enabled="true" data-infinite="false" id="scroller">    
+      <ul id="page1listview" data-role="listview">
+        <!--<li><a href="#page2">Andreu</a></li>
+        <li><a href="#page2">Joan</a></li>
+        <li><a href="#page2">Jaume</a></li>-->
+      </ul>
+    </div>
   </div>
 
   <div data-role="footer" data-position="fixed">

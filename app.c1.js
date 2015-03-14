@@ -12,6 +12,13 @@ app.c1 = {
 		$('#page1addbutton').on("click", function() {
 			app.c3.data.index = null;
 		});
+    
+    $('#scroller').on('iscrollpulled', function(ev, d) {
+  		app.m.proxy.ajax.carregarDades(function() {
+  			app.c1.update();
+        d.deferred.resolve();
+  		});
+    });
 
 	},
 
