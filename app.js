@@ -10,6 +10,9 @@ var app = {
 		*/
 	},
 
+	deviceReady: false,
+	deviceLanguage: 'es-ES',
+
 	preparaRutes: function() {
 		for(var prop in app) {
 			if(app[prop].hasOwnProperty("page")) { // hem trobat un controlador
@@ -18,7 +21,22 @@ var app = {
 		}
 	},
 
+	onDeviceReady: function() {
+		app.deviceReady = true;
+		navigator.globalization.getPreferredLanguage(function(language) {
+			app.deviceLanguage = language.value;
+			for(controlador in app.rutes) {
+				app.rutes[controlador].updateLanguage();
+			}
+		}, function() {
+			console.error("Error reading language.");
+		})
+	},
+
 	init: function() {
+
+		document.addEventListener("deviceready", app.onDeviceReady, false);
+
 		$(document).on("pagecreate", "div:jqmData(role='page')", function() {
 			if($.isEmptyObject(app.rutes)) {
 				app.preparaRutes();
@@ -43,9 +61,6 @@ var app = {
 		  }
 		});
 
-		/*$(document).on("pagecontainershow", function(event, ui) {
-		  console.log("PAGECONTAINERSHOW change page");
-		});*/
 	},
 
 };

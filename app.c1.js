@@ -13,13 +13,19 @@ app.c1 = {
 			app.c3.data.index = null;
 		});
     
-    $('#scroller').on('iscrollpulled', function(ev, d) {
-  		app.m.proxy.ajax.carregarDades(function() {
-  			app.c1.update();
-        d.deferred.resolve();
-  		});
-    });
+    	/*
+	    $('#scroller').on('iscrollpulled', function(ev, d) {
+	  		app.m.proxy.ajax.carregarDades(function() {
+	  			app.c1.update();
+	        	d.deferred.resolve();
+	  		});
+    	});
+		*/
 
+	},
+
+	updateLanguage: function() {
+		$('#page1addbutton').text(app.l.get("Afegir"));
 	},
 
 	updateList: function() {
@@ -43,9 +49,9 @@ app.c1 = {
 
 	afterShow: function() {
 		console.log("afterShow c1");
-		app.m.proxy.ajax.carregarDades(function() {
+		//app.m.proxy.ajax.carregarDades(function() {
 			app.c1.update();
-		});
+		//});
 	},
 
 	update: function() {

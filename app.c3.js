@@ -20,14 +20,30 @@ app.c3 = {
 			} else {
 				app.m.afegeixAlumne(alumne);
 			}
-			app.m.proxy.ajax.guardarDades(function() {
+			//app.m.proxy.ajax.guardarDades(function() {
+				if(app.deviceReady) {
+					navigator.notification.alert(
+						"Element esborrat",
+						function() {
+							console.log("Dialeg tancat");
+						},
+						"Esborrat",
+						"D'acord"
+						);
+				}
 				$.mobile.back();
-			});
+			//});
 		});
 
 		$('#page3deletebutton').on("click", function() {
 			app.m.eliminaAlumne(app.c3.data.index);
+			//app.m.proxy.ajax.guardarDades(function() {
+				$.mobile.back();
+			//});
 		});
+	},
+
+	updateLanguage: function() {
 	},
 
 	beforeShow: function() {

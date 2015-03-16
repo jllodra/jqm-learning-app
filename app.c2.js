@@ -14,6 +14,9 @@ app.c2 = {
 		});
 	},
 
+	updateLanguage: function() {
+	},
+
 	beforeShow: function() {
 		console.log("beforeShow c2");
 		app.c2.update();
