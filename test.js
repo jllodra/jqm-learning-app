@@ -1,3 +1,5 @@
+"use strict";
+
 // cream variables de tipus elementals
 
 var n = 10;
@@ -50,7 +52,7 @@ var variable = 10;
 
 function incrementaVariable(cantidad) {
 	var nueva_variable = cantidad;
-	this.variable += nueva_variable;
+	//this.variable += nueva_variable;
 }
 
 var funciones = {
@@ -107,7 +109,7 @@ comparar2.apply(pos1);
 comparar2.apply(pos2);
 
 comparar2.bind(pos1);
-comparar2();
+//comparar2();
 
 //
 
@@ -122,3 +124,130 @@ f(function() {
 
 //
 
+// closure
+
+console.group("closure and scoping");
+
+var a = "global";
+
+function h2(f2) {
+	console.log(a);
+	f2();
+}
+
+function f2() {
+
+	var a = "closure";
+
+	function g2(a) {
+		a = a;
+		console.log(a);
+	}
+
+	g2(3);
+
+	h2(g2);
+
+}
+
+f2();
+
+console.groupEnd();
+
+// modul
+
+console.group("modul basic");
+
+var testModule = (function () {
+  var counter = 0;
+  return {
+  	getCounter: function() {
+  		return counter;
+  	},
+    incrementCounter: function () {
+      return counter++;
+    },
+    resetCounter: function () {
+      console.log( "counter value prior to reset: " + counter );
+      counter = 0;
+    }
+  };
+})();
+ 
+// Usage:
+// Increment our counter
+testModule.incrementCounter();
+// Check the counter value and reset
+// Outputs: counter value prior to reset: 1
+console.log(testModule.getCounter());
+testModule.resetCounter();
+console.log(testModule.getCounter());
+
+console.groupEnd();
+
+console.group("modul factory");
+
+var Comptador = (function() {
+
+  var instancies = 0;
+
+  return function(step) {
+
+  	var counter = 0;
+  	instancies++;
+  
+  	return {
+	  	getCounter: function() {
+	  		return counter;
+	  	},
+	    incrementCounter: function() {
+	    	counter = counter + step;
+	      	return counter;
+	    },
+	    resetCounter: function() {
+	      	console.log( "counter value prior to reset: " + counter );
+	      	counter = 0;
+	    },
+	    getNombreComptadors: function() {
+	    	return instancies;
+	    }
+	}
+  };
+})();
+
+var contador1 = Comptador(1);
+var contador2 = Comptador(8);
+contador1.incrementCounter();
+contador1.incrementCounter();
+contador1.incrementCounter();
+contador2.incrementCounter();
+console.log(contador1.getCounter());
+console.log(contador2.getCounter());
+console.log(contador1.getNombreComptadors());
+
+console.groupEnd();
+
+console.group("Mixin");
+
+var base = {
+  prop1: 0,
+  prop2: { weight: 52, price: 100 },
+  update: function() {
+  	throw "Has d'implementar";
+  }
+};
+var extensio = {
+  update: function() {
+	console.log("Ja ho he implementat");
+  },
+  prop4: 100
+};
+ 
+// Merge object2 into object1
+var object = $.extend({}, base, extensio);
+
+object.update();
+
+console.log(object);
+
+console.groupEnd();
