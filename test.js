@@ -251,3 +251,26 @@ object.update();
 console.log(object);
 
 console.groupEnd();
+
+// Prototips
+
+function Creadora(nom) {
+	// si ho crid amb new, this es el nou objecte,
+	// si no, this es undefined o window.
+	this.nom = nom;
+}
+
+Creadora.prototype.proto1 = "hola";
+
+Creadora.prototype.proto2 =  function() {
+	console.log("som proto2");
+	console.log(this);
+}
+
+//var c = Creadora();
+var c =  new Creadora("jo som c");
+var d =  new Creadora("jo som d");
+
+// Protip a partir d'Object
+
+Object.
