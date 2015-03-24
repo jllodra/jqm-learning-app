@@ -273,4 +273,38 @@ var d =  new Creadora("jo som d");
 
 // Protip a partir d'Object
 
-Object.
+//Object.create(...)
+
+function Customer(orderAmount) {
+	var cost = orderAmount / 2;
+	this.orderAmount = orderAmount;
+	var that = this;
+
+	// privileged method
+	this.calculateProfit =  function() {
+		return this.orderAmount - cost;
+	}
+}
+
+Customer.prototype.report = function() {
+	console.log(this.calculateProfit());
+}
+
+var customer = new Customer(3000);
+customer.report();
+
+
+
+function VIPCustomer() {
+	Customer.call(this, 10);
+}
+
+VIPCustomer.prototype = Object.create(Customer.prototype);
+//VIPCustomer.prototype = new Customer();
+VIPCustomer.prototype.constructor = VIPCustomer;
+
+VIPCustomer.prototype.extensionMethod = function() {
+	console.log("extension method");
+}
+
+var vip = new VIPCustomer();
